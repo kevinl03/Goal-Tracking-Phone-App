@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notes.Views.YourProgress">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="textCouleur">
+                Black
+            </Color>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <!-- Where different compenents can use the same layout-->
+      
+            <Label 
+                
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"
+                BindingContext="{x:Reference slider}"
+                Rotation="{Binding Path = Value}"
+                Text= "{Binding Value, StringFormat =  'Welcome to Xamarin.Forms! @ {0:F0} degrees'} "/>
+            
+            <Slider 
+                    x:Name="slider"
+                    VerticalOptions="CenterAndExpand" 
+                    BackgroundColor="Black"
+                    ValueChanged="OnSliderValueChanged"
+                    Maximum="100" 
+                    />
+                    
+
+
+            <Label 
+               x:Name="valueLabel" 
+               Text="0"
+               TextColor="Black"
+               Font="Large"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="StartAndExpand" />
+
+            <Label 
+                
+               Text="Todays mood score"
+               TextColor="{StaticResource textCouleur}"
+               Font="Large"
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="StartAndExpand" />
+
+            <Button Text="Click Me!"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand"
+                Clicked="OnButtonClicked" />
+        </StackLayout>
+    </ContentPage.Content>
+    
+    <!--<StackLayout>
+    //</StackLayout>-->
+</ContentPage>

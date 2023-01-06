@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Notes.Views.NoteEntryPage"
+             BackgroundColor="Gray"
+             Title="Note Entry">
+             
+             
+    <!-- Layout children vertically -->
+    <!--<StackLayout Margin="20">
+
+        <Editor Placeholder="Enter your note"
+                Text="{Binding Text}"
+                HeightRequest="100" />
+        <Editor Placeholder="Goal Description"
+                Text="{Binding Date}"
+                HeightRequest="100" />
+        
+         Layout children in two columns 
+        <Grid ColumnDefinitions="*,*">
+            <Button Text="Save"
+                    Clicked="OnSaveButtonClicked" />
+            <Button Grid.Column="1"
+                    Text="Delete"
+                    Clicked="OnDeleteButtonClicked"/>
+        </Grid>
+    </StackLayout>-->
+     <!--Vertical is the default -->
+    <!--<Grid ColumnSpacing="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        
+        <Frame BorderColor="Black"
+               Padding="5">
+            <Label Text="Goal Name:" />
+        </Frame>
+        <Entry Grid.Column="1" Placeholder="Enter Goal Name" PlaceholderColor="Green"/>
+        <Label Grid.Row="1" Text="Consistency" />
+        <Button Grid.Row="1" Grid.Column="1" />
+        <Label Grid.Row="2" Text="Occupation:" />
+        <Entry Grid.Row="2" Grid.Column="1" Placeholder="Enter your occupation" />
+        <Label Grid.Row="3" Text="Address:" />
+        <Entry Grid.Row="3" Grid.Column="1" Placeholder="Enter your address" />
+        <Button Grid.Row ="5" Grid.Column ="0" Text="Save"
+                    Clicked="OnSaveButtonClicked" />
+        <Button Grid.Row ="4" Grid.Column="1"
+                    Text="Delete"
+                    Clicked="OnDeleteButtonClicked"/>
+        <DatePicker Grid.Column="0" Grid.Row ="4" MinimumDate="{Binding Date}"
+            MaximumDate="12/31/2022"
+            Date="06/21/2018" />
+
+    </Grid>-->
+    <Grid HorizontalOptions="Center" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="280"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!-- Android corner radius 20-->
+        <!-- ios Corner radius 10-->
+        <!-- Background Frame -->
+        <Frame Grid.Row="0" BackgroundColor="White"  Padding="0" Margin="0" HasShadow="False" VerticalOptions="Start" HeightRequest="50" WidthRequest="280" HorizontalOptions="Center">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="15"></On>
+                    <On Platform="Android" Value="20"></On>
+                </OnPlatform>
+            </Frame.CornerRadius>
+        </Frame>
+
+        <!-- Running Frame -->
+        <Frame x:Name="runningFrame" HeightRequest="50" WidthRequest="140" BackgroundColor="Green" HasShadow="True" Margin="0" Padding="0"  HorizontalOptions="Start" VerticalOptions="Start">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="15"></On>
+                    <On Platform="Android" Value="20"></On>
+                </OnPlatform>
+            </Frame.CornerRadius>
+        </Frame>
+
+        <!-- Selection text1-->
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Start" WidthRequest="140" HeightRequest="50" BackgroundColor="Transparent">
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                <TapGestureRecognizer Tapped="OnText1Tapped"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+            <Label x:Name="text1" Text="Consistency" TextColor="White" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+        </StackLayout>
+
+        <!-- Selection text2-->
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" WidthRequest="140" HeightRequest="50" BackgroundColor="Transparent">
+            <StackLayout.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated"></PanGestureRecognizer>
+                <TapGestureRecognizer Tapped="OnText2Tapped"></TapGestureRecognizer>
+            </StackLayout.GestureRecognizers>
+            <Label x:Name="text2" Text="Frequency" TextColor="Black" WidthRequest="200" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalOptions="Center"></Label>
+        </StackLayout>
+
+        <!--<DatePicker 
+                   MinimumDate="{Binding Date}"
+                    MaximumDate="12/31/2022"
+                    Date="06/21/2018" />-->
+
+        <Grid ColumnSpacing="10"
+              IsVisible="False">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+
+            <Frame BorderColor="Black"
+               Padding="5">
+                <Label Text="Goal Name:" />
+            </Frame>
+            <Entry Grid.Column="2" Placeholder="Enter Goal Name" PlaceholderColor="Green"/>
+            <Label Grid.Row="2" Text="Consistency" />
+            <Button Grid.Row="2" Grid.Column="1" />
+            <Label Grid.Row="3" Text="Occupation:" />
+            <Entry Grid.Row="3" Grid.Column="1" Placeholder="Enter your occupation" />
+            <Label Grid.Row="4" Text="Address:" />
+            <Entry Grid.Row="4" Grid.Column="1" Placeholder="Enter your address" />
+           
+            <DatePicker Grid.Column="0" Grid.Row ="4" MinimumDate="{Binding Date}"
+            MaximumDate="12/31/2022"
+            Date="06/21/2018" />
+
+        </Grid>
+
+    </Grid>
+
+
+
+</ContentPage>
