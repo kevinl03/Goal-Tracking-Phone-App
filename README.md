@@ -7,10 +7,9 @@ I expect this app to go be published on the iOS app store and google playstore d
 
 ## To run this app on your local machine with Visual Studio 2022
   Have *Mobile development with .NET workload installed*
+  
   Create new project using template: Mobile App (Xamarin.Forms)
+  
   Fork Goal-Tracking-Phone-App into repository
   
 
-
-## Note
-Currently not on the published for the public use
